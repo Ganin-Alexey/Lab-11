@@ -71,6 +71,21 @@ namespace HelloApp{
 			
 			// Статические методы и поля
 			student.get_counter();
+			// Одномерный массив из 15-ти студентов
+			student [] students = new student[5];
+			for(int i = 0; i < students.Length; i++){
+				students[i] = new student();
+				Console.WriteLine($"Student № {students[i].IdPrint()}: {students[i].SurnamePrint()}\n"); 
+			}
+			// Двумерный массив студентов
+			// Введем переменную кол-во аудиторий - classrooms и пусть оно принимает значение 3 и в каждой аудитории по 5 студентов
+			int classrooms = 3;
+			student[,] students_and_classrooms = new student[classrooms, 5];
+			for(int j = 0; j < classrooms; j++)
+				for(int i = 0; i < 5; i++){
+				students_and_classrooms[j, i] = new student();	
+				Console.WriteLine($"Classroom №{j+1}: {students_and_classrooms[j, i].IdPrint()}: {students_and_classrooms[j, i].SurnamePrint()}\n"); 
+				}
 			Console.ReadKey();
 		}
 		

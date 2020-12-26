@@ -18,8 +18,8 @@ public class student{
 	// Конструктор без параметров
 	public student()
     {
-        this.name = "None";
-	    this.surname = "None";
+        this.name = "None" + counter;
+	    this.surname = "None" + counter;
 		this.ID = counter++;
 	    this.number_of_phone = 0000000;
     }
@@ -83,5 +83,11 @@ public class student{
            }
 		   Console.WriteLine($"\n");
         }
+	public int IdPrint(){
+		return this.ID;
+	}
+	public string SurnamePrint(){
+		return this.surname;
+	}
 }
 }
