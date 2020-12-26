@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1608998726 source:h:\git_leaning\lab-11\lab-11\main.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	<string.h>
+	<locale>
+	<time.h>
+	<stdlib.h>
+	<windows.h>
+	<cstdlib>
+	<sstream>
+	<string>
+

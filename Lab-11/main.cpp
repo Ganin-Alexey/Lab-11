@@ -7,15 +7,16 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <cstdlib>
-
+ #include <sstream>  //include this to use string streams
+ #include <string>
 class student{
     public:
         // Дружественная функция
         friend void reset(student &student);
         // Конструктор без параметров
         student(){
-            name = "None";
-            surname = "None";
+            name = "None_" + std::to_string(num_of_stud);
+            surname = "None_" + std::to_string(num_of_stud);
             id = num_of_stud++;
             number_of_phone = 000000;
         }
@@ -27,7 +28,7 @@ class student{
             number_of_phone = 000000;
             num_of_stud++;
             for (int i = 0; i < 10; i++){
-                array_of_ratings[i] = 0;
+                array_of_ratings[i] = 1 + rand() % 5;
             }
         }
         // Конструктор со всеми параметрами
@@ -101,7 +102,6 @@ class student{
         void NameSurnamePrint(){
             std::cout << this->name << " " << this->surname << std::endl;
         }
-
         std::string NamePrint(){
             return this->name;
         }
@@ -111,7 +111,6 @@ class student{
         void RatingPrint(){
             std::cout << "Rating " << this->NamePrint() << ": ";
             for (int i = 0; i < 10; i++){
-                array_of_ratings[i] = 0;
                 std::cout << array_of_ratings[i] << "; ";
             }
             std::cout << std::endl;
@@ -240,5 +239,19 @@ int main(){
     n3.value = n1.value;
     n3.name = strdup(n1.name); // Глубокая копия - n3.name идентично n1.name в отношении
                                // только его содержимого, но это уже не тот же указатель
+
+    // Одномерный массив из 15-ти студентов
+    student students[15];
+    for(int i = 0; i < 15; i++){
+       std::cout<< "Student №"  <<  students[i].IdPrint() << ": "<< students[i].SurnamePrint() << std::endl;
+    }
+    // Двумерный массив студентов
+    // Введем переменную кол-во аудиторий - classrooms и пусть оно принимает значение от 1 до 3 и в каждой аудитории по 5 студентов
+    int classrooms = (2 + rand() % 5);
+    student students_and_classrooms[classrooms][5];
+    for(int j = 0; j < classrooms; j++)
+        for(int i = 0; i < 5; i++){
+           std::cout << "Classroom №" << j + 1 << ": " << students_and_classrooms[j][i].IdPrint() << ": "<< students_and_classrooms[j][i].SurnamePrint() << std::endl;
+        }
     return 0;
 }
