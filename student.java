@@ -9,9 +9,9 @@ public class student{
     /*начало блока инициализатора*/
 	// Конструктор без параметров
     student(){
-        name = "None";
-        surname = "None";
-        id=counter;
+        name = "None" + counter;
+        surname = "None" + counter;
+        id=counter++;
         number_of_phone = 000000;
     }
     /*конец блока инициализатора*/
@@ -69,4 +69,10 @@ public class student{
            }
            System.out.printf("\n");
     }
+	int IdPrint(){
+		return this.id;
+	}
+	String SurnamePrint(){
+		return this.surname;
+	}
 }
